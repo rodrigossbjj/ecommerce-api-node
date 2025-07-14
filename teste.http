@@ -1,5 +1,24 @@
 @env = dev
 
+### POST Auth - Registrar
+POST http://localhost:3000/auth/registrar
+Content-Type: application/json
+
+{
+  "nome": "Rodrigo",
+  "email": "rodrigo@email.com",
+  "senha": "123456"
+}
+
+### POST Auth - Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "rodrigo@email.com",
+  "senha": "123456"
+}
+
 ### GET produtos
 GET http://localhost:3000/produtos
 
@@ -27,21 +46,28 @@ Content-Type: application/json
 DELETE http://localhost:3000/produtos/4
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
 
-### POST Auth - Registrar
-POST http://localhost:3000/auth/registrar
+### POST Adicionar produto ao carrinho
+POST http://localhost:3000/carrinho/adicionar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
 Content-Type: application/json
 
 {
-  "nome": "Rodrigo",
-  "email": "rodrigo@email.com",
-  "senha": "123456"
+  "id": 1,
+  "nome": "Kimono",
+  "preco": 799.99,
+  "quantidade": 1
 }
 
-### POST Auth - Login
-POST http://localhost:3000/auth/login
+### POST remover produto do carrinho
+POST http://localhost:3000/carrinho/remover
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
 Content-Type: application/json
 
 {
-  "email": "rodrigo@email.com",
-  "senha": "123456"
+  "id": 1
 }
+
+
+### GET Ver produtos e consultar o total do carrinho
+GET http://localhost:3000/carrinho
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE

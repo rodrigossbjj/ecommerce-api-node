@@ -6,9 +6,10 @@ app.use(express.json());
 // Importar rotas de produtos
 const rotasProdutos = require('./routes/produtos');
 const rotasAuth = require('./routes/auth');
+const rotasCarrinho = require('./routes/carrinho');
 app.use('/produtos', rotasProdutos);
 app.use('/auth', rotasAuth);
-
+app.use('/carrinho', rotasCarrinho);
 
 const PORT = 3000
 app.listen(PORT, () => {
