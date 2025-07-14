@@ -71,3 +71,18 @@ Content-Type: application/json
 ### GET Ver produtos e consultar o total do carrinho
 GET http://localhost:3000/carrinho
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+
+
+### POST /checkout - Finalizar pedido
+POST http://localhost:3000/carrinho/checkout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+
+
+### GET /pedidos
+GET http://localhost:3000/carrinho/pedidos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+
+
+### POST /cancelar/:id
+POST http://localhost:3000/carrinho/cancelar/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE

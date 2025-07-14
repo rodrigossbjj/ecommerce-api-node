@@ -4,6 +4,8 @@ const autenticarToken = require('../middlewares/authMiddleware');
 
 //Carrinhos por usuário (simulação em memória)
 const carrinhos = {};
+const pedidos = {}; // <- novo
+let proximoPedidoId = 1;
 
 //Adicionar item ao carrinho
 router.post('/adicionar', autenticarToken, (req, res) => {
@@ -50,5 +52,64 @@ router.get('/', autenticarToken, (req, res) => {
 
   res.json({ carrinho, total: parseFloat(total.toFixed(2)) });
 });
+
+//Finalizar pedido (checkout)
+router.post('/checkout', autenticarToken, (req, res) => {
+  const userId = req.usuario.id;
+  const carrinho = carrinhos[userId];
+
+  if (!carrinho || carrinho.length === 0) {
+    return res.status(400).json({ erro: 'Carrinho vazio. Adicione produtos antes de finalizar o pedido.' });
+  }
+
+  const total = carrinho.reduce((soma, p) => soma + (p.preco * p.quantidade), 0);
+
+  const pedido = {
+  id: proximoPedidoId++,
+  usuarioId: userId,
+  data: new Date().toISOString(),
+  itens: carrinho,
+  total: parseFloat(total.toFixed(2)),
+  status: 'finalizado'
+};
+
+if (!pedidos[userId]) pedidos[userId] = [];
+pedidos[userId].push(pedido);
+
+//Limpar carrinho
+carrinhos[userId] = [];
+
+res.status(201).json({
+  mensagem: 'Pedido finalizado com sucesso!',
+  pedido
+});
+});
+
+//Listar todos os pedidos do usuário
+router.get('/pedidos', autenticarToken, (req, res) => {
+  const userId = req.usuario.id;
+  res.json(pedidos[userId] || []);
+});
+
+//Cancelar um pedido por ID
+router.post('/cancelar/:id', autenticarToken, (req, res) => {
+  const userId = req.usuario.id;
+  const pedidoId = parseInt(req.params.id);
+
+  const listaPedidos = pedidos[userId];
+  if (!listaPedidos) return res.status(404).json({ erro: 'Nenhum pedido encontrado.' });
+
+  const pedido = listaPedidos.find(p => p.id === pedidoId);
+  if (!pedido) return res.status(404).json({ erro: 'Pedido não encontrado.' });
+
+  if (pedido.status === 'cancelado') {
+    return res.status(400).json({ erro: 'Pedido já está cancelado.' });
+  }
+
+  pedido.status = 'cancelado';
+
+  res.json({ mensagem: 'Pedido cancelado com sucesso.', pedido });
+});
+
 
 module.exports = router;
