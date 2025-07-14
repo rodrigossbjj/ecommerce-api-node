@@ -1,11 +1,47 @@
+@env = dev
+
 ### GET produtos
 GET http://localhost:3000/produtos
 
 ### POST produto
 POST http://localhost:3000/produtos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
 Content-Type: application/json
 
 {
   "nome": "Tv",
   "preco": 2999.99
+}
+
+### POST Atualizar produto por ID
+PUT http://localhost:3000/produtos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Content-Type: application/json
+
+{
+  "nome": "Kimono Kingz",
+  "preco": 249.99
+}
+
+### Excluir produto por ID 
+DELETE http://localhost:3000/produtos/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+
+### POST Auth - Registrar
+POST http://localhost:3000/auth/registrar
+Content-Type: application/json
+
+{
+  "nome": "Rodrigo",
+  "email": "rodrigo@email.com",
+  "senha": "123456"
+}
+
+### POST Auth - Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "rodrigo@email.com",
+  "senha": "123456"
 }
