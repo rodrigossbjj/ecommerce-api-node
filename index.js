@@ -7,9 +7,11 @@ app.use(express.json());
 const rotasProdutos = require('./routes/produtos');
 const rotasAuth = require('./routes/auth');
 const rotasCarrinho = require('./routes/carrinho');
+const rotasPedidos = require('./routes/pedidos');
 app.use('/produtos', rotasProdutos);
 app.use('/auth', rotasAuth);
 app.use('/carrinho', rotasCarrinho);
+app.use('/pedidos', rotasPedidos);
 
 const PORT = 3000
 app.listen(PORT, () => {

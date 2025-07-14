@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "usuarioId": 1,
+    "data": "2025-07-14T13:58:38.808Z",
+    "itens": [
+      {
+        "id": 1,
+        "nome": "Kimono",
+        "preco": 799.99,
+        "quantidade": 1
+      }
+    ],
+    "total": 799.99,
+    "status": "cancelado"
+  },
+  {
+    "id": 2,
+    "usuarioId": 1,
+    "data": "2025-07-14T14:06:40.987Z",
+    "itens": [
+      {
+        "id": 1,
+        "nome": "Kimono",
+        "preco": 799.99,
+        "quantidade": 1
+      }
+    ],
+    "total": 799.99,
+    "status": "finalizado"
+  }
+]

@@ -1,67 +1,82 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const router = express.Router();
-const autenticarToken = require("../middlewares/authMiddleware");
 
-//Simulação de banco de dados
-let produtos = [
-  { id: 1, nome: 'Camiseta', preco: 49.9 },
-  { id: 2, nome: 'Tênis', preco: 199.9 }
-];
+const filePath = path.join(__dirname, '../db/produtos.json');
 
-//GET /produtos - listar produtos
+// Função utilitária para carregar e salvar
+const carregarProdutos = () => {
+  const data = fs.readFileSync(filePath);
+  return JSON.parse(data);
+};
+
+const salvarProdutos = (produtos) => {
+  fs.writeFileSync(filePath, JSON.stringify(produtos, null, 2));
+};
+
+// GET /produtos
 router.get('/', (req, res) => {
+  const produtos = carregarProdutos();
   res.json(produtos);
 });
 
-//POST /produtos - adicionar novo produto
-router.post('/', autenticarToken, (req, res) => {
-  const {nome, preco} = req.body;
-
-  //Validação de Produto
-  if(!nome || typeof nome !== 'string' || nome.trim() === ''){
-    return res.status(400).json({ erro: 'Nome do produto é obrigatório e deve ser uma string válida.' });
-  }
-  
-  if (preco === undefined || typeof preco !== 'number' || preco <= 0) {
-    return res.status(400).json({ erro: 'Preço do produto deve ser um número maior que zero.' });
-  }
-
-  const novoProduto = {
-    id: produtos.length + 1,
-    nome: nome.trim(),
-    preco
-  };
-    
-  produtos.push(novoProduto);
-  res.status(201).json(novoProduto);
-  
-});
-
-//POST /produtos/:id - Atuliaza Produto por ID
-router.put('/:id', autenticarToken, (req, res) => {
-  const { id } = req.params;
+// POST /produtos
+router.post('/', (req, res) => {
   const { nome, preco } = req.body;
 
-  const produto = produtos.find(p => p.id === parseInt(id));
+  if (!nome || typeof nome !== 'string' || nome.trim() === '') {
+    return res.status(400).json({ erro: 'Nome do produto é obrigatório.' });
+  }
+
+  if (preco === undefined || typeof preco !== 'number' || preco <= 0) {
+    return res.status(400).json({ erro: 'Preço inválido.' });
+  }
+
+  const produtos = carregarProdutos();
+  const novoProduto = {
+    id: produtos.length ? produtos[produtos.length - 1].id + 1 : 1,
+    nome,
+    preco
+  };
+
+  produtos.push(novoProduto);
+  salvarProdutos(produtos);
+
+  res.status(201).json(novoProduto);
+});
+
+// PUT /produtos/:id
+router.put('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const { nome, preco } = req.body;
+
+  const produtos = carregarProdutos();
+  const produto = produtos.find(p => p.id === id);
+
   if (!produto) return res.status(404).json({ erro: 'Produto não encontrado.' });
 
-  if (nome) produto.nome = nome.trim();
-  if (preco && typeof preco === 'number' && preco > 0) produto.preco = preco;
+  produto.nome = nome || produto.nome;
+  produto.preco = preco !== undefined ? preco : produto.preco;
+
+  salvarProdutos(produtos);
 
   res.json(produto);
 });
 
+// DELETE /produtos/:id
+router.delete('/:id', (req, res) => {
+  const id = parseInt(req.params.id);
 
-//POST /produtos/:id - Exclui Produto por ID
-router.delete('/:id', autenticarToken, (req, res) => {
-  const { id } = req.params;
+  let produtos = carregarProdutos();
+  const existe = produtos.some(p => p.id === id);
 
-  const index = produtos.findIndex(p => p.id === parseInt(id));
-  if (index === -1) return res.status(404).json({ erro: 'Produto não encontrado.' });
+  if (!existe) return res.status(404).json({ erro: 'Produto não encontrado.' });
 
-  const excluido = produtos.splice(index, 1);
-  res.json({ mensagem: 'Produto excluído com sucesso.', produto: excluido[0] });
+  produtos = produtos.filter(p => p.id !== id);
+  salvarProdutos(produtos);
+
+  res.json({ mensagem: 'Produto removido com sucesso.' });
 });
-
 
 module.exports = router;
