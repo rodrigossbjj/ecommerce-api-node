@@ -21,7 +21,7 @@ npm install
 ## ▶️ Executar o projeto
 
 ```bash
-npm start
+npm index.js
 ```
 
 Servidor inicia em: `http://localhost:3000`
