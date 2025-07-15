@@ -23,11 +23,12 @@ Content-Type: application/json
 
 ### GET produtos
 GET http://localhost:3000/produtos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTMxNjEsImV4cCI6MTc1MjYyMDM2MX0.PCkVXdARtb6Oa0-Hso7MOAZYuSCaR7U_SIKoSdZaRWc
 
 
 ### POST produto
 POST http://localhost:3000/produtos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTMxNjEsImV4cCI6MTc1MjYyMDM2MX0.PCkVXdARtb6Oa0-Hso7MOAZYuSCaR7U_SIKoSdZaRWc
 Content-Type: application/json
 
 {
@@ -36,9 +37,9 @@ Content-Type: application/json
 }
 
 
-### POST Atualizar produto por ID
-PUT http://localhost:3000/produtos/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+### PUT Atualizar produto por ID
+PUT http://localhost:3000/produtos/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTMxNjEsImV4cCI6MTc1MjYyMDM2MX0.PCkVXdARtb6Oa0-Hso7MOAZYuSCaR7U_SIKoSdZaRWc
 Content-Type: application/json
 
 {
@@ -48,13 +49,12 @@ Content-Type: application/json
 
 
 ### Excluir produto por ID 
-DELETE http://localhost:3000/produtos/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
-
+DELETE http://localhost:3000/produtos/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 
 ### POST Adicionar produto ao carrinho
 POST http://localhost:3000/carrinho/adicionar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 Content-Type: application/json
 
 {
@@ -67,7 +67,7 @@ Content-Type: application/json
 
 ### POST remover produto do carrinho
 POST http://localhost:3000/carrinho/remover
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 Content-Type: application/json
 
 {
@@ -77,19 +77,19 @@ Content-Type: application/json
 
 ### GET Ver produtos e consultar o total do carrinho
 GET http://localhost:3000/carrinho
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 
 
 ### POST /checkout - Finalizar pedido
 POST http://localhost:3000/carrinho/checkout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 
 
 ### GET /pedidos
 GET http://localhost:3000/pedidos/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk
 
 
 ### POST /cancelar/:id
 POST http://localhost:3000/pedidos/cancelar/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI0OTczNDEsImV4cCI6MTc1MjUwNDU0MX0.XG7EYHlFrGkpBpmWIT-HChhgV0MV4ZvAgjYcVS5wJFE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tZSI6IlJvZHJpZ28iLCJpYXQiOjE3NTI2MTI1NDMsImV4cCI6MTc1MjYxOTc0M30.JalOF906BHMEyMYFQlCyDM0qI2fpRceCp39pMPs8Xqk

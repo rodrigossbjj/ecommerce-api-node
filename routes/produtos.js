@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const autenticarToken = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 const filePath = path.join(__dirname, '../db/produtos.json');
@@ -16,13 +17,13 @@ const salvarProdutos = (produtos) => {
 };
 
 // GET /produtos
-router.get('/', (req, res) => {
+router.get('/', autenticarToken, (req, res) => {
   const produtos = carregarProdutos();
   res.json(produtos);
 });
 
 // POST /produtos
-router.post('/', (req, res) => {
+router.post('/', autenticarToken, (req, res) => {
   const { nome, preco } = req.body;
 
   if (!nome || typeof nome !== 'string' || nome.trim() === '') {
@@ -47,7 +48,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT /produtos/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', autenticarToken, (req, res) => {
   const id = parseInt(req.params.id);
   const { nome, preco } = req.body;
 
@@ -65,7 +66,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /produtos/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', autenticarToken, (req, res) => {
   const id = parseInt(req.params.id);
 
   let produtos = carregarProdutos();

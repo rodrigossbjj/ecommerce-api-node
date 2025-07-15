@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "nome": "Notebook Dell Inspiron",
+    "preco": 4299.9
+  },
+  {
+    "id": 2,
+    "nome": "Smartphone Samsung Galaxy S23",
+    "preco": 3899
+  },
+  {
+    "id": 3,
+    "nome": "TV LG 55 Polegadas 4K",
+    "preco": 2799
+  },
+  {
+    "id": 4,
+    "nome": "Fone de Ouvido Sony WH-1000XM5",
+    "preco": 1899.9
+  },
+  {
+    "id": 5,
+    "nome": "Console PlayStation 5",
+    "preco": 4499
+  },
+  {
+    "id": 6,
+    "nome": "Smartwatch Apple Watch Series 8",
+    "preco": 3999
+  },
+  {
+    "id": 7,
+    "nome": "Câmera Canon EOS R6",
+    "preco": 12999
+  },
+  {
+    "id": 8,
+    "nome": "Tablet Samsung Galaxy Tab S8",
+    "preco": 3499.9
+  },
+  {
+    "id": 9,
+    "nome": "Impressora Multifuncional HP",
+    "preco": 899
+  },
+  {
+    "id": 10,
+    "nome": "Kimono Kingz",
+    "preco": 249.99
+  },
+  {
+    "id": 11,
+    "nome": "Tv",
+    "preco": 2999.99
+  }
+]
